@@ -8,16 +8,18 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: process.env.VITE_API_URL || 'http://localhost:3001',
+        target: 'http://localhost:3001',
         changeOrigin: true
       }
     }
   },
   build: {
     outDir: 'dist',
-    bin: resolve(__dirname, 'node_modules/vite/bin/vite.js')
-  },
-  optimizeDeps: {
-    exclude: ['sql.js']
+    bin: resolve(__dirname, 'node_modules/vite/bin/vite.js'),
+    rollupOptions: {
+      define: {
+        'import.meta.env.VITE_API_URL': JSON.stringify('https://flower-garden-m5vg.onrender.com')
+      }
+    }
   }
 })
