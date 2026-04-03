@@ -35,7 +35,7 @@ export default function Header() {
             <Link to="/#flowers" className="text-gray-600 hover:text-pink-600 transition-colors font-medium">
               花卉目录
             </Link>
-            <Link to="/#tips" className="text-gray-600 hover:text-pink-600 transition-colors font-medium">
+            <Link to="/tips" className="text-gray-600 hover:text-pink-600 transition-colors font-medium">
               养护技巧
             </Link>
           </nav>
@@ -132,7 +132,7 @@ export default function Header() {
                 🌺 花卉目录
               </Link>
               <Link
-                to="/#tips"
+                to="/tips"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded-lg transition-colors"
               >
