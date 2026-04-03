@@ -49,7 +49,7 @@ export default function Admin() {
   const handleSaveFlower = async (flowerData) => {
     try {
       const url = editingFlower 
-        ? `${API_BASE}/api/admin/flowers/${editingFlower.id}` 
+        ? `${API_BASE}/api/admin/flowers/${editingFlower._id}` 
         : `${API_BASE}/api/admin/flowers`
       
       const res = await fetch(url, {
@@ -175,8 +175,8 @@ export default function Admin() {
                       </thead>
                       <tbody>
                         {flowers.map(flower => (
-                          <tr key={flower.id} className="border-b hover:bg-gray-50">
-                            <td className="py-4 pr-4">{flower.id}</td>
+                          <tr key={flower._id} className="border-b hover:bg-gray-50">
+                            <td className="py-4 pr-4">{flower._id}</td>
                             <td className="py-4 pr-4">
                               <div className="flex items-center gap-3">
                                 <img src={flower.image} alt={flower.name} className="w-12 h-12 rounded-lg object-cover" />
@@ -207,7 +207,7 @@ export default function Admin() {
                                 编辑
                               </button>
                               <button
-                                onClick={() => handleDeleteFlower(flower.id)}
+                                onClick={() => handleDeleteFlower(flower._id)}
                                 className="text-red-600 hover:underline"
                               >
                                 删除
@@ -242,8 +242,8 @@ export default function Admin() {
                       </thead>
                       <tbody>
                         {users.map(u => (
-                          <tr key={u.id} className="border-b hover:bg-gray-50">
-                            <td className="py-4 pr-4">{u.id}</td>
+                          <tr key={u._id} className="border-b hover:bg-gray-50">
+                            <td className="py-4 pr-4">{u._id}</td>
                             <td className="py-4 pr-4 font-medium">{u.username}</td>
                             <td className="py-4 pr-4 text-gray-600">{u.email}</td>
                             <td className="py-4 pr-4">
@@ -254,17 +254,17 @@ export default function Admin() {
                               </span>
                             </td>
                             <td className="py-4">
-                              {u.id !== user.id && (
+                              {u._id !== user.id && (
                                 <select
                                   value={u.role}
-                                  onChange={(e) => handleChangeRole(u.id, e.target.value)}
+                                  onChange={(e) => handleChangeRole(u._id, e.target.value)}
                                   className="px-3 py-1 border rounded-lg text-sm"
                                 >
                                   <option value="user">设为用户</option>
                                   <option value="admin">设为管理员</option>
                                 </select>
                               )}
-                              {u.id === user.id && (
+                              {u._id === user.id && (
                                 <span className="text-gray-400 text-sm">当前用户</span>
                               )}
                             </td>
@@ -325,7 +325,7 @@ function FlowerModal({ flower, onSave, onClose, token }) {
         <div className="p-6 border-b sticky top-0 bg-white">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold">
-              {flower?.id ? '编辑花卉' : '添加花卉'}
+              {flower?._id ? '编辑花卉' : '添加花卉'}
             </h2>
             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
           </div>
