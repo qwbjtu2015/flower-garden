@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'flower-garden-secret-key-2024';
+const JWT_SECRET = process.env.JWT_SECRET || 'flower-garden-secret-key-2024';
 
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -43,7 +43,7 @@ export const requireAdmin = (req, res, next) => {
 
 export const generateToken = (user) => {
   return jwt.sign(
-    { id: user.id, username: user.username, email: user.email, role: user.role },
+    { id: user._id?.toString() || user.id, username: user.username, email: user.email, role: user.role },
     JWT_SECRET,
     { expiresIn: '7d' }
   );

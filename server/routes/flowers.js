@@ -1,48 +1,43 @@
 import express from 'express';
-import { getDb } from '../db/database.js';
+import { Flower } from '../models/Flower.js';
+import { Comment } from '../models/Comment.js';
 
 const router = express.Router();
 
-// 辅助函数：将sql.js结果转换为对象数组
-function resultToArray(result) {
-  if (!result || result.length === 0) return [];
-  const columns = result[0].columns;
-  return result[0].values.map(row => {
-    const obj = {};
-    columns.forEach((col, i) => obj[col] = row[i]);
-    return obj;
-  });
-}
-
 // 获取所有花卉（支持分类筛选）
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { category, search, difficulty } = req.query;
-    const db = getDb();
-
-    let sql = 'SELECT * FROM flowers WHERE 1=1';
-
+    
+    const filter = {};
+    
     if (category && category !== '全部') {
-      sql += ` AND category = '${category}'`;
+      filter.category = category;
     }
 
     if (search) {
-      const searchTerm = search.replace(/'/g, "''");
-      sql += ` AND (name LIKE '%${searchTerm}%' OR name_en LIKE '%${searchTerm}%' OR description LIKE '%${searchTerm}%')`;
+      filter.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { name_en: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } }
+      ];
     }
 
     if (difficulty && difficulty !== 'all') {
-      sql += ` AND difficulty = '${difficulty}'`;
+      filter.difficulty = difficulty;
     }
 
-    sql += ' ORDER BY created_at DESC';
-
-    const flowers = resultToArray(db.exec(sql));
+    const flowers = await Flower.find(filter).sort({ created_at: -1 });
 
     // 获取分类统计
-    const categories = resultToArray(db.exec('SELECT category, COUNT(*) as count FROM flowers GROUP BY category'));
+    const categories = await Flower.aggregate([
+      { $group: { _id: '$category', count: { $sum: 1 } } }
+    ]);
 
-    res.json({ flowers, categories });
+    res.json({ 
+      flowers, 
+      categories: categories.map(c => ({ category: c._id, count: c.count })) 
+    });
   } catch (error) {
     console.error('获取花卉列表错误:', error);
     res.status(500).json({ error: '服务器错误' });
@@ -50,24 +45,30 @@ router.get('/', (req, res) => {
 });
 
 // 获取单个花卉详情
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const db = getDb();
 
-    const flowers = resultToArray(db.exec(`SELECT * FROM flowers WHERE id = ${id}`));
+    const flower = await Flower.findById(id);
 
-    if (flowers.length === 0) {
+    if (!flower) {
       return res.status(404).json({ error: '花卉不存在' });
     }
 
-    const flower = flowers[0];
-
     // 获取评论统计
-    const stats = resultToArray(db.exec(`SELECT COUNT(*) as count, AVG(rating) as avgRating FROM comments WHERE flower_id = ${id}`));
+    const stats = await Comment.aggregate([
+      { $match: { flower_id: flower._id } },
+      { 
+        $group: { 
+          _id: null, 
+          count: { $sum: 1 }, 
+          avgRating: { $avg: '$rating' } 
+        } 
+      }
+    ]);
 
     res.json({
-      ...flower,
+      ...flower.toObject(),
       commentCount: stats[0]?.count || 0,
       avgRating: stats[0]?.avgRating ? Number(stats[0].avgRating.toFixed(1)) : 0
     });
@@ -78,12 +79,11 @@ router.get('/:id', (req, res) => {
 });
 
 // 获取所有分类
-router.get('/meta/categories', (req, res) => {
+router.get('/meta/categories', async (req, res) => {
   try {
-    const db = getDb();
-    const categories = resultToArray(db.exec('SELECT DISTINCT category FROM flowers ORDER BY category'));
+    const categories = await Flower.distinct('category');
 
-    res.json({ categories: categories.map(c => c.category) });
+    res.json({ categories });
   } catch (error) {
     console.error('获取分类错误:', error);
     res.status(500).json({ error: '服务器错误' });
