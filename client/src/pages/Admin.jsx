@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { API_BASE } from '../config'
 
 export default function Admin() {
   const { user, token } = useAuth()
@@ -26,13 +27,13 @@ export default function Admin() {
     setLoading(true)
     try {
       if (activeTab === 'flowers') {
-        const res = await fetch('/api/admin/flowers', {
+        const res = await fetch(`${API_BASE}/api/admin/flowers`, {
           headers: { Authorization: `Bearer ${token}` }
         })
         const data = await res.json()
         setFlowers(data.flowers || [])
       } else if (activeTab === 'users') {
-        const res = await fetch('/api/admin/users', {
+        const res = await fetch(`${API_BASE}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` }
         })
         const data = await res.json()
@@ -48,8 +49,8 @@ export default function Admin() {
   const handleSaveFlower = async (flowerData) => {
     try {
       const url = editingFlower 
-        ? `/api/admin/flowers/${editingFlower.id}` 
-        : '/api/admin/flowers'
+        ? `${API_BASE}/api/admin/flowers/${editingFlower.id}` 
+        : `${API_BASE}/api/admin/flowers`
       
       const res = await fetch(url, {
         method: editingFlower ? 'PUT' : 'POST',
@@ -74,7 +75,7 @@ export default function Admin() {
     if (!confirm('确定要删除这朵花吗？')) return
     
     try {
-      const res = await fetch(`/api/admin/flowers/${id}`, {
+      const res = await fetch(`${API_BASE}/api/admin/flowers/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -89,7 +90,7 @@ export default function Admin() {
 
   const handleChangeRole = async (userId, newRole) => {
     try {
-      const res = await fetch(`/api/admin/users/${userId}/role`, {
+      const res = await fetch(`${API_BASE}/api/admin/users/${userId}/role`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

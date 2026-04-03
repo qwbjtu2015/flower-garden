@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import FlowerCard from '../components/FlowerCard'
+import { API_BASE } from '../config'
 
 export default function Home() {
   const [flowers, setFlowers] = useState([])
@@ -22,7 +23,7 @@ export default function Home() {
       if (selectedDifficulty !== 'all') params.append('difficulty', selectedDifficulty)
       if (searchKeyword) params.append('search', searchKeyword)
 
-      const res = await fetch(`/api/flowers?${params}`)
+      const res = await fetch(`${API_BASE}/api/flowers?${params}`)
       const data = await res.json()
       setFlowers(data.flowers)
       setCategories(['全部', ...data.categories.map(c => c.category)])

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
+import { API_BASE } from '../config'
 
 export default function CommentSection({ flowerId, flowerName }) {
   const { user, token } = useAuth()
@@ -17,7 +18,7 @@ export default function CommentSection({ flowerId, flowerName }) {
 
   const fetchComments = async () => {
     try {
-      const res = await fetch(`/api/flowers/${flowerId}/comments`)
+      const res = await fetch(`${API_BASE}/api/flowers/${flowerId}/comments`)
       const data = await res.json()
       setComments(data.comments)
     } catch (error) {
@@ -35,7 +36,7 @@ export default function CommentSection({ flowerId, flowerName }) {
     setError('')
 
     try {
-      const res = await fetch(`/api/flowers/${flowerId}/comments`, {
+      const res = await fetch(`${API_BASE}/api/flowers/${flowerId}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ export default function CommentSection({ flowerId, flowerName }) {
     if (!confirm('确定要删除这条评论吗？')) return
 
     try {
-      const res = await fetch(`/api/flowers/comments/${commentId}`, {
+      const res = await fetch(`${API_BASE}/api/flowers/comments/${commentId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       })

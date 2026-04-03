@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import CommentSection from '../components/CommentSection'
+import { API_BASE } from '../config'
 
 export default function FlowerDetail() {
   const { id } = useParams()
@@ -17,7 +18,7 @@ export default function FlowerDetail() {
   const fetchFlower = async () => {
     try {
       setLoading(true)
-      const res = await fetch(`/api/flowers/${id}`)
+      const res = await fetch(`${API_BASE}/api/flowers/${id}`)
       if (!res.ok) throw new Error('花卉不存在')
       const data = await res.json()
       setFlower(data)
