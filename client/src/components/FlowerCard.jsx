@@ -14,7 +14,7 @@ export default function FlowerCard({ flower }) {
   }
 
   return (
-    <Link to={`/flower/${flower.id}`} className="card group block">
+    <Link to={`/flower/${flower._id}`} className="card group block">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img

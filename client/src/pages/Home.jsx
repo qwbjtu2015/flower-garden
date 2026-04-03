@@ -158,7 +158,7 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {flowers.map((flower, index) => (
-                <div key={flower.id} className="animate-fade-in" style={{animationDelay: `${index * 50}ms`}}>
+                <div key={flower._id} className="animate-fade-in" style={{animationDelay: `${index * 50}ms`}}>
                   <FlowerCard flower={flower} />
                 </div>
               ))}

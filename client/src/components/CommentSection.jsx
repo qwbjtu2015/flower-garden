@@ -72,7 +72,7 @@ export default function CommentSection({ flowerId, flowerName }) {
         throw new Error(data.error)
       }
 
-      setComments(comments.filter(c => c.id !== commentId))
+      setComments(comments.filter(c => c._id !== commentId))
     } catch (err) {
       alert(err.message)
     }
@@ -165,7 +165,7 @@ export default function CommentSection({ flowerId, flowerName }) {
       ) : (
         <div className="space-y-6">
           {comments.map((comment) => (
-            <div key={comment.id} className="flex gap-4 p-4 bg-gray-50 rounded-xl">
+            <div key={comment._id} className="flex gap-4 p-4 bg-gray-50 rounded-xl">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white font-medium flex-shrink-0">
                 {comment.username.charAt(0).toUpperCase()}
               </div>
@@ -188,9 +188,9 @@ export default function CommentSection({ flowerId, flowerName }) {
                 </div>
                 <p className="text-gray-600 leading-relaxed">{comment.content}</p>
               </div>
-              {user && user.id === comment.user_id && (
+              {user && user._id === comment.user_id && (
                 <button
-                  onClick={() => handleDelete(comment.id)}
+                  onClick={() => handleDelete(comment._id)}
                   className="text-gray-400 hover:text-red-500 transition-colors self-start"
                   title="删除评论"
                 >
