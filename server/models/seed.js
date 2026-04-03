@@ -15,7 +15,7 @@ const flowers = [
     sunlight: '喜欢充足阳光，需要每天6小时以上的直射光照。阳光充足花开更艳。',
     temperature: '适宜生长温度15-26°C，冬季不低于5°C。',
     fertilizer: '生长期每两周施一次复合肥，花期前增施磷钾肥。可使用有机肥如腐熟的鸡粪。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%8E%AB%E7%91%B0%E8%82%9A%E8%8D%AF+%E6%B0%B4%E6%BA%B6%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%8E%AB%E7%91%B0%E8%8A%B1%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '春夏秋',
     bloom_time: '5-10月'
@@ -31,7 +31,7 @@ const flowers = [
     sunlight: '需要充足的光照，每天至少4小时阳光。',
     temperature: '适宜温度15-28°C，耐寒性较好。',
     fertilizer: '春季萌芽期施氮肥，花期前施磷钾肥，秋季补充有机肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E6%9C%88%E5%AD%A3%E8%82%9A%E8%8D%AF+%E6%B0%B4%E6%BA%B6%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E6%9C%88%E5%AD%A3%E8%8A%B1%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'easy',
     season: '全年',
     bloom_time: '全年开花'
@@ -47,7 +47,7 @@ const flowers = [
     sunlight: '需要充足的阳光，每天至少6小时光照。',
     temperature: '生长期适宜温度10-20°C，耐寒不耐热。',
     fertilizer: '种植时施底肥，生长期追施磷钾肥促进开花。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E9%83%81%E9%87%91%E9%A6%99%E8%82%9A%E8%8D%AF+%E9%93%B6%E9%82%A3%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E9%83%81%E9%87%91%E9%A6%99%E7%A7%8D%E7%90%83%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '春秋',
     bloom_time: '3-5月'
@@ -63,7 +63,7 @@ const flowers = [
     sunlight: '喜欢散射光，避免阳光直射。放在东窗或北窗处最佳。',
     temperature: '适宜温度15-28°C，不耐严寒，冬季需保暖。',
     fertilizer: '生长期使用兰花专用肥，稀释后施用，薄肥勤施。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E5%85%B0%E8%8A%B1%E4%B8%93%E7%94%A8%E8%82%9A%E8%8D%AF&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E5%85%B0%E8%8A%B1%E4%B8%93%E7%94%A8%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'hard',
     season: '冬春',
     bloom_time: '1-4月'
@@ -79,7 +79,7 @@ const flowers = [
     sunlight: '必须充足的阳光，每天至少8小时直射光。',
     temperature: '适宜温度18-30°C，喜温暖耐热。',
     fertilizer: '种植时施足底肥，生长期追施氮肥，开花前增施磷钾肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E5%90%91%E6%97%A5%E8%91%97%E8%82%9A%E8%8D%AF+%E8%82%A0%E8%93%84%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E5%90%91%E6%97%A5%E8%91%97%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'easy',
     season: '夏秋',
     bloom_time: '7-9月'
@@ -95,7 +95,7 @@ const flowers = [
     sunlight: '喜阳光但忌暴晒，夏季需要适当遮阴。',
     temperature: '耐寒性强，适宜温度12-25°C。',
     fertilizer: '花后施复合肥，秋季施有机肥，冬季停肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%89%B1%E7%89%9B%E8%82%9A%E8%8D%AF+%E6%B0%B4%E6%BA%B6%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%89%B1%E7%89%9B%E8%8A%B1%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'hard',
     season: '春夏',
     bloom_time: '4-5月'
@@ -111,7 +111,7 @@ const flowers = [
     sunlight: '喜阳光充足，夏季中午需要遮阴。',
     temperature: '适宜温度15-25°C，耐寒性较好。',
     fertilizer: '生长期每两周施一次液肥，现蕾期增施磷钾肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%99%BE%E5%90%88%E8%8D%AF%E8%82%9A%E8%8D%AF+%E9%93%B6%E9%82%A3%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%99%BE%E5%90%88%E8%8A%B1%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '春夏秋',
     bloom_time: '5-8月'
@@ -127,7 +127,7 @@ const flowers = [
     sunlight: '需要充足阳光，菊花的短日照特性促进开花。',
     temperature: '适宜温度15-25°C，耐寒性好。',
     fertilizer: '生长期施氮肥，现蕾后增施磷钾肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%91%89%E8%8D%AF%E8%82%9A%E8%8D%AF+%E9%93%B6%E9%82%A3%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%91%89%E8%8A%B1%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'easy',
     season: '秋冬',
     bloom_time: '9-11月'
@@ -143,7 +143,7 @@ const flowers = [
     sunlight: '必须充足的阳光，每天至少6小时直射光。',
     temperature: '适宜温度15-25°C，耐寒耐热。',
     fertilizer: '对肥料需求不高，春季施少量缓释肥即可。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%96%B0%E8%A1%A3%E8%8D%AF%E8%82%9A%E8%8D%AF+%E7%BC%93%E9%87%8A%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%96%B0%E8%A1%A3%E8%8D%AF%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '春夏',
     bloom_time: '5-7月'
@@ -159,7 +159,7 @@ const flowers = [
     sunlight: '喜欢散射光，避免阳光直射，放在明亮的室内位置即可。',
     temperature: '适宜温度18-28°C，不耐低温，冬季需保暖。',
     fertilizer: '使用蝴蝶兰专用肥，稀释1000倍，生长期每两周施一次。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%9D%B4%E8%9D%B6%E5%85%B0%E8%82%9A%E8%8D%AF+%E6%B0%B4%E6%BA%B6%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E8%9D%B4%E8%9D%B6%E5%85%B0%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '冬春',
     bloom_time: '2-4月'
@@ -175,7 +175,7 @@ const flowers = [
     sunlight: '喜欢散射光，放在明亮的窗边，避免阳光直射。',
     temperature: '适宜温度10-18°C，不耐高温，室内凉爽处养护最佳。',
     fertilizer: '生长期每两周施一次稀释液肥，花期停止施肥。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E4%BB%99%E5%AE%A2%E6%9D%A5%E8%82%9A%E8%8D%AF+%E9%93%B6%E9%82%A3%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E4%BB%99%E5%AE%A2%E6%9D%A5%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'medium',
     season: '秋冬春',
     bloom_time: '10-4月'
@@ -191,7 +191,7 @@ const flowers = [
     sunlight: '耐阴，放在明亮的散射光处最佳，避免阳光直射。',
     temperature: '适宜温度15-30°C，不耐寒，冬季注意保暖。',
     fertilizer: '生长期每月施一次稀释液肥或缓释肥即可。',
-    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%BB%BF%E8%90%9D%E8%82%9A%E8%8D%AF+%E6%B0%B4%E6%BA%B6%E8%82%9A&enc=utf-8',
+    fertilizer_link: 'https://search.jd.com/Search?keyword=%E7%BB%BF%E8%90%9D%E8%82%A5%E6%96%99&enc=utf-8',
     difficulty: 'easy',
     season: '全年',
     bloom_time: '观叶植物'
